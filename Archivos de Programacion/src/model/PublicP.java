@@ -9,8 +9,8 @@ public class PublicP extends PlayList{
 
   private double rankPlayList;
 
-  public Public(String namePlayList, Duration durationPlayList, Gender genderPlayList){
-    super(namePlayList, durationPlayList, genderPlayList);
+  public Public(String namePlayList, double rankPlayList){
+    super(namePlayList);
     this.rankPlayList = rankPlayList;
   }
 

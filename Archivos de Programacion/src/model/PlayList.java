@@ -11,9 +11,9 @@ public class PlayList{
   private Duration durationPlayList;
   private Gender genderPlayList;
 
-  public PlayList(String namePlayList, Duration durationPlayList, Gender genderPlayList){
+  public PlayList(String namePlayList){
     this.namePlayList = namePlayList;
-    this.durationPlayList = durationPlayList;
+    this.durationPlayList = new Duration(0,0); 
     this.genderPlayList = genderPlayList;
   }
 

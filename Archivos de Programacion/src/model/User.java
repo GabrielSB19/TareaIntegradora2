@@ -11,12 +11,14 @@ public class User{
   private String password;
   private int ageUser;
   private CategoryUser categoryUser;
+  private int amountCategory;
 
   public User(String userName, String password, int ageUser){
     this.userName = userName;
     this.password = password;
     this.ageUser = ageUser;
     this.categoryUser = CategoryUser.newbie;
+    this.amountCategory = amountCategory;
   }
 
   public String getUserName(){
@@ -51,6 +53,14 @@ public class User{
     this.categoryUser = categoryUser;
   }
 
+  public int getAmountCategory(){
+    return amountCategory;
+  }
+
+  public void setAmountCategory(int amountCategory){
+    this.amountCategory = amountCategory;
+  }
+
   public String showDataUser(){
     String dataUser = "************ User ************\n";
     dataUser += "** User: "+getUserName()+"\n";
@@ -58,5 +68,10 @@ public class User{
     dataUser +="** Category:  "+getCategoryUser()+"\n";
     dataUser += "******************************\n";
     return dataUser;
+  }
+
+  public CategoryUser newCategory(String categoryChange){
+    CategoryUser myUserCategory = CategoryUser.valueOf(categoryChange);
+    return myUserCategory;
   }
 }

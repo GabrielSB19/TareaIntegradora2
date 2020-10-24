@@ -12,8 +12,8 @@ public class RestrictedP extends PlayList{
   private User[] userP;
   userP = new User[MAX_PLAYLISTUSER];
 
-  public RestrictedP(String namePlayList, Duration durationPlayList, Gender genderPlayList, User[] userP){
-    super(namePlayList, durationPlayList, genderPlayList);
+  public RestrictedP(String namePlayList, User[] userP){
+    super(namePlayList);
     this.userP = userP;
   }
 

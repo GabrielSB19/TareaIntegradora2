@@ -9,8 +9,8 @@ public class PrivateP extends PlayList{
 
   private User user1;
 
-  public PrivateP(String namePlayList, Duration durationPlayList, Gender genderPlayList, User user1){
-    super(namePlayList, durationPlayList, genderPlayList);
+  public PrivateP(String namePlayList, User user1){
+    super(namePlayList);
     this.user1 = user1;
   }
 

@@ -116,7 +116,13 @@ public class Menu{
           System.out.println("Ingresaste un valor equivocado");
           optionGender = sc.nextInt();
       }
+      System.out.println("Selecciona el usuario que agrega la cancion");
+      System.out.println(myMcs.showNameUser());
+      int index = sc.nextInt();
+      myMcs.userIndex(index);
+      myMcs.changeCategory(index-1);
       myMcs.addSongPool(tittleSong, artistName, realaseDateSong, minutes, seconds, genderSong);
+      System.out.println("La cancion se ha agregado correctamente");
     }
     else {
       System.out.println("No se ha agregado la cancion debido a que se ha excedido el numero de canciones permitidas");

@@ -8,7 +8,7 @@ package model;
 public class Mcs{
 
   public static final int MAX_USER = 10;
-  public static final int MAX_SONG = 2;
+  public static final int MAX_SONG = 30;
   public static final int MAX_PLAYLIST = 20;
   private int numUser;
   private int numSongs;
@@ -77,13 +77,30 @@ public class Mcs{
     return dataSong;
   }
 
-/*
-  public void addPlayList(){
-    for(int i = 0; i<MAX_PLAYLIST; i++){
-      if(thePlayLists[i] == null){
-        thePlayLists[i] == new addPlayList()
+  public String showNameUser(){
+    String nameUsertoSong = "";
+    for(int i = 0; i<MAX_USER; i++){
+      if(user[i] != null){
+        nameUsertoSong += "["+(i+1)+"]"+user[i].getUserName()+"\n";
       }
     }
+    return nameUsertoSong;
   }
-  */
+
+  public void userIndex(int namePosicion){
+    int index = namePosicion -1;
+    user[index].setAmountCategory(user[index].getAmountCategory()+1);
+  }
+
+  public void changeCategory(int index){
+    if(user[index].getAmountCategory()>=3 && user[index].getAmountCategory()<=10){
+      user[index].setCategoryUser(user[index].newCategory("littleContributor"));
+    }
+    else if(user[index].getAmountCategory()>10 && user[index].getAmountCategory()<30){
+      user[index].setCategoryUser(user[index].newCategory("mildContributor"));
+    }
+    else {
+      user[index].setCategoryUser(user[index].newCategory("starContributor"));
+    }
+  }
 }

@@ -12,7 +12,7 @@ public class PlayList{
   private Gender genderPlayList;
   private int typePlayList;
 
-  public PlayList(String namePlayList, Duration durationPlayList, Gender genderPlayList, int typePlayList){
+  public PlayList(String namePlayList, Duration durationPlayList, Gender genderPlayList){
     this.namePlayList = namePlayList;
     durationPlayList = 0;
     gender = "";

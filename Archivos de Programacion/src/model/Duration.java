@@ -7,22 +7,12 @@ package model;
 
 public class Duration{
 
-  private int hours;
   private int minutes;
   private int seconds;
 
-  public Duration(int hours, int minutes, int seconds){
-    this.hours = hours;
+  public Duration(int minutes, int seconds){
     this.minutes = minutes;
     this.seconds = seconds;
-  }
-
-  public int getHours(){
-    return hours;
-  }
-
-  public void setHours(int hours){
-    this.hours = hours;
   }
 
   public int getMinutes(){

@@ -12,15 +12,13 @@ public class Song{
   private String realaseDateSong;
   private Duration durationSong;
   private Gender genderSong;
-  private int index;
-  private Gender[] allGender = Gender.values();
 
-  public Song(String tittleSong, String artistName, String realaseDateSong, Duration durationSong, int index){
+  public Song(String tittleSong, String artistName, String realaseDateSong, Duration durationSong, Gender genderSong){
     this.tittleSong = tittleSong;
     this.artistName = artistName;
     this.realaseDateSong = realaseDateSong;
     this.durationSong = durationSong;
-    genderSong = allGender[index-1];
+    this.genderSong = genderSong
   }
 
   public String getTittleSong(){

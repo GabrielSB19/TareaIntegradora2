@@ -78,14 +78,6 @@ public class Mcs{
   }
 
 /*
-  public void addSongPool(){
-    for(int i = 0; i<MAX_SONG; i++){
-      if(poolSong[i] == null){
-        poolSong[i] = new Song();
-      }
-    }
-  }
-
   public void addPlayList(){
     for(int i = 0; i<MAX_PLAYLIST; i++){
       if(thePlayLists[i] == null){

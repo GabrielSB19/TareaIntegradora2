@@ -10,16 +10,34 @@ public class PlayList{
   private String namePlayList;
   private Duration durationPlayList;
   private Gender genderPlayList;
-  private int typePlayList;
 
   public PlayList(String namePlayList, Duration durationPlayList, Gender genderPlayList){
     this.namePlayList = namePlayList;
-    durationPlayList = 0;
-    gender = "";
-    typePlayList = 0;
+    this.durationPlayList = durationPlayList;
+    this.genderPlayList = genderPlayList;
   }
 
   public String getNamePlayList(){
     return namePlayList;
+  }
+
+  public void setNamePlayList(){
+    this.namePlayList = namePlayList;
+  }
+
+  public Duration getDurationPlayList(){
+    return durationPlayList;
+  }
+
+  public void setDurationPlayList(){
+    this.durationPlayList = durationPlayList;
+  }
+
+  public Gender getGenderPlayList(){
+    return genderPlayList;
+  }
+
+  public void setGenderPlayList(){
+    this.genderPlayList = genderPlayList;
   }
 }

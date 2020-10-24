@@ -18,7 +18,7 @@ public class Song{
     this.artistName = artistName;
     this.realaseDateSong = realaseDateSong;
     this.durationSong = durationSong;
-    this.genderSong = genderSong
+    this.genderSong = genderSong;
   }
 
   public String getTittleSong(){
@@ -35,5 +35,19 @@ public class Song{
 
   public Duration getDurationSong(){
     return durationSong;
+  }
+
+  public Gender getGenderSong(){
+    return genderSong;
+  }
+
+  public String showDataSong(){
+    String dataSong = "************ Song ************\n";
+    dataSong += "**  Tittle: "+getTittleSong()+"\n";
+    dataSong += "**  Artist: "+getArtistName()+"\n";
+    dataSong += "**  Duration: "+getDurationSong().toDuration()+"\n";
+    dataSong += "**  Genre:  "+getGenderSong()+"\n";
+    dataSong += "******************************\n";
+    return dataSong;
   }
 }

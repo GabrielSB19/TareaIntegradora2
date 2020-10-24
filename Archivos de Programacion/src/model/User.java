@@ -16,7 +16,7 @@ public class User{
     this.userName = userName;
     this.password = password;
     this.ageUser = ageUser;
-    categoryUser = CategoryUser.newbie;
+    this.categoryUser = CategoryUser.newbie;
   }
 
   public String getUserName(){

@@ -30,4 +30,10 @@ public class Duration{
   public void setSeconds(int seconds){
     this.seconds = seconds;
   }
+
+  public String toDuration(){
+    String durationSong;
+    durationSong = getMinutes()+":"+getSeconds();
+    return durationSong;
+  }
 }

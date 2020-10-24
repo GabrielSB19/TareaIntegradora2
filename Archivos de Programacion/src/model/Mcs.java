@@ -8,19 +8,21 @@ package model;
 public class Mcs{
 
   public static final int MAX_USER = 10;
-  public static final int MAX_SONG = 30;
+  public static final int MAX_SONG = 2;
   public static final int MAX_PLAYLIST = 20;
   private int numUser;
+  private int numSongs;
 
   private User[] user;
-  //private Song[] poolSong;
+  private Song[] poolSong;
   //private PlayList[] thePlayLists;
   public Mcs(){
     user = new User[MAX_USER];
+    poolSong = new Song[MAX_SONG];
     numUser = 0;
+    numSongs = 0;
   }
 
-    //poolSong = new Song[MAX_SONG];
     //thePlayLists = new PlayList[MAX_PLAYLIST];
 
   public void addUser(String userName, String password, int ageUser){
@@ -46,6 +48,33 @@ public class Mcs{
       }
     }
     return dataUser;
+  }
+
+  public void addSongPool(String tittleSong, String artistName, String realaseDateSong, int minutes, int seconds, String genderSong){
+    Duration durationSong = new Duration(minutes, seconds);
+    Gender askGenderSong = Gender.valueOf(genderSong);
+    boolean space1 = false;
+    for(int i = 0; i<MAX_SONG && !space1; i++){
+      if(poolSong[i] == null){
+        poolSong[i] = new Song(tittleSong, artistName, realaseDateSong, durationSong, askGenderSong);
+        space1 = true;
+        numSongs++;
+      }
+    }
+  }
+
+  public boolean hasSong(){
+    return numSongs < MAX_SONG;
+  }
+
+  public String showSong(){
+    String dataSong ="";
+    for(int i = 0; i<MAX_SONG; i++){
+      if(poolSong[i] != null){
+        dataSong += poolSong[i].showDataSong();
+      }
+    }
+    return dataSong;
   }
 
 /*

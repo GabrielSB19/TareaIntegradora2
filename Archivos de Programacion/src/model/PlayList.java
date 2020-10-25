@@ -7,14 +7,18 @@ package model;
 
 public class PlayList{
 
+  private final static int NUM_MAX_SONGS = 30;
+
   private String namePlayList;
   private Duration durationPlayList;
   private Gender genderPlayList;
+  private Song[] songtoPlayList = new Song[NUM_MAX_SONGS];
 
   public PlayList(String namePlayList){
     this.namePlayList = namePlayList;
     this.durationPlayList = new Duration(0, 0);
     genderPlayList = Gender.DESCONOCIDO;
+    this.songtoPlayList = songtoPlayList;
   }
 
   public String getNamePlayList(){
@@ -41,6 +45,15 @@ public class PlayList{
     this.genderPlayList = genderPlayList;
   }
 
+  public void addSongatOne(Song mySongToPlayList){
+    boolean out = false;
+    for(int i = 0; i<NUM_MAX_SONGS && !out; i++){
+      if(songtoPlayList[i] == null){
+        songtoPlayList[i] = mySongToPlayList;
+        out = true;
+      }
+    }
+  }
   public String showDatePlayList(){
     String dataPlayList="";
     dataPlayList = "************ PlayList ************\n";

@@ -184,4 +184,41 @@ public class Mcs{
     }
     return usersRestrictedPlayLists;
   }
+
+  public double[] aksPointsPlayListPublic(double grade){
+    boolean space6 = false;
+    double [] average = new double[MAX_USER];
+    for(int i = 0; i<MAX_USER && !space6; i++){
+      if(average[i] != 0){
+        average[i] = grade;
+      }
+    }
+    return average;
+  }
+
+  public String showPlayListNames(){
+    String namePlayList = "";
+    for(int i = 0; i<MAX_PLAYLIST; i++){
+      if(thePlayLists[i] != null){
+        namePlayList += "["+(i+1)+"]"+thePlayLists[i].getNamePlayList()+"\n";
+      }
+    }
+    return namePlayList;
+  }
+
+  public String showSongName(){
+    String nameSong = "";
+    for (int i = 0; i<MAX_SONG; i++){
+      if(poolSong[i] != null){
+        nameSong += "["+(i+1)+"]"+poolSong[i].getTittleSong()+"\n";
+      }
+    }
+    return nameSong;
+  }
+
+  public void addSongInThePlayList(int index1, int index2){
+    index1 = index1-1;
+    index2 = index2-1;
+    thePlayLists[index1].addSongatOne(poolSong[index2]);
+  }
 }

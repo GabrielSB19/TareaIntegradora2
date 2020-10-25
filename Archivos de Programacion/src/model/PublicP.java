@@ -7,18 +7,20 @@ package model;
 
 public class PublicP extends PlayList{
 
-  private double rankPlayList;
+  private final static int NUM_MAX_POINTS = 10;
+
+  private double average[] = new double[NUM_MAX_POINTS];
 
   public PublicP(String namePlayList){
     super(namePlayList);
-    this.rankPlayList = rankPlayList;
+    this.average = average;
   }
 
-  public double getRankPlayList(){
-    return rankPlayList;
+  public double[] getAverage(){
+    return average;
   }
 
-  public void setRankPlayList(double rankPlayList){
-    this.rankPlayList = rankPlayList;
+  public void setAverage(double[] average){
+    this.average = average;
   }
 }

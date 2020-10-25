@@ -20,6 +20,7 @@ public class Menu{
     System.out.println("[4] Ver el listado de la canciones");
     System.out.println("[5] Crear una PlayList");
     System.out.println("[6] Ver el listado de la PlayList");
+    System.out.println("[7] Añadir canciones a una PlayList");
   }
 
   public int readOption(){
@@ -47,6 +48,10 @@ public class Menu{
       break;
       case 6:
       System.out.println(myMcs.showPlayList());
+      break;
+      case 7:
+      addSongToPlayList();
+      break;
       default:
         System.out.println("Ingresa una opcion valida");
     }
@@ -58,7 +63,7 @@ public class Menu{
       showMenu();
       option = readOption();
       doOperation(option);
-    } while(option != 7);
+    } while(option != 8);
   }
 
   public void addDataUser(){
@@ -176,5 +181,16 @@ public class Menu{
           System.out.println("No elegiste una opcion valida");
       }
     }
+  }
+
+  public void addSongToPlayList(){
+    System.out.println("Selecciona la PlayList a la que le deseas agregar una cancion");
+    System.out.print(myMcs.showPlayListNames());
+    int index1 = sc.nextInt();
+    sc.nextLine();
+    System.out.println("Selecciona la cancion que desas agregar a tu PlayList elegida");
+    System.out.println(myMcs.showSongName());
+    int index2 = sc.nextInt();
+    sc.nextLine();
   }
 }

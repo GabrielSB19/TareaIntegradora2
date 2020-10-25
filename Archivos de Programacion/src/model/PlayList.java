@@ -13,8 +13,8 @@ public class PlayList{
 
   public PlayList(String namePlayList){
     this.namePlayList = namePlayList;
-    this.durationPlayList = new Duration(0,0); 
-    this.genderPlayList = genderPlayList;
+    this.durationPlayList = new Duration(0, 0);
+    genderPlayList = Gender.DESCONOCIDO;
   }
 
   public String getNamePlayList(){
@@ -39,5 +39,14 @@ public class PlayList{
 
   public void setGenderPlayList(){
     this.genderPlayList = genderPlayList;
+  }
+
+  public String showDatePlayList(){
+    String dataPlayList="";
+    dataPlayList = "************ PlayList ************\n";
+    dataPlayList += "** Tittle: "+getNamePlayList()+"\n";
+    dataPlayList += "** Duration: "+getDurationPlayList().toDuration()+"\n";
+    dataPlayList += "** Genre: "+getGenderPlayList();
+    return dataPlayList;
   }
 }

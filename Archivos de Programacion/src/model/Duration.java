@@ -11,8 +11,8 @@ public class Duration{
   private int seconds;
 
   public Duration(int minutes, int seconds){
-    this.minutes = minutes;
-    this.seconds = seconds;
+    this.minutes = 0;
+    this.seconds = 0;
   }
 
   public int getMinutes(){
@@ -33,7 +33,7 @@ public class Duration{
 
   public String toDuration(){
     String durationSong;
-    durationSong = getMinutes()+":"+getSeconds();
+    durationSong = minutes+":"+seconds;
     return durationSong;
   }
 }

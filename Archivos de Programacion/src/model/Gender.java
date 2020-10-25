@@ -11,5 +11,6 @@ public enum Gender{
   MUSICACLASICA,
   RAGGAE,
   SALSA,
-  METAL;
+  METAL,
+  DESCONOCIDO;
 }

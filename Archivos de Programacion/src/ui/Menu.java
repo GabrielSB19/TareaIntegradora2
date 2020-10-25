@@ -19,6 +19,7 @@ public class Menu{
     System.out.println("[3] Ingresa una cancion que desees");
     System.out.println("[4] Ver el listado de la canciones");
     System.out.println("[5] Crear una PlayList");
+    System.out.println("[6] Ver el listado de la PlayList");
   }
 
   public int readOption(){
@@ -41,6 +42,11 @@ public class Menu{
       case 4:
       System.out.println(myMcs.showSong());
       break;
+      case 5:
+      addPlayList();
+      break;
+      case 6:
+      System.out.println(myMcs.showPlayList());
       default:
         System.out.println("Ingresa una opcion valida");
     }
@@ -52,7 +58,7 @@ public class Menu{
       showMenu();
       option = readOption();
       doOperation(option);
-    } while(option != 5);
+    } while(option != 7);
   }
 
   public void addDataUser(){
@@ -117,7 +123,7 @@ public class Menu{
           optionGender = sc.nextInt();
       }
       System.out.println("Selecciona el usuario que agrega la cancion");
-      System.out.println(myMcs.showNameUser());
+      System.out.print(myMcs.showNameUser());
       int index = sc.nextInt();
       myMcs.userIndex(index);
       myMcs.changeCategory(index-1);
@@ -126,6 +132,49 @@ public class Menu{
     }
     else {
       System.out.println("No se ha agregado la cancion debido a que se ha excedido el numero de canciones permitidas");
+    }
+  }
+
+  public void addPlayList(){
+    String namePlayList = "";
+    if(myMcs.hasPlayList()){
+      System.out.println("Que tipo de PlayList deseas crear");
+      System.out.println("[1] Publica");
+      System.out.println("[2] Privada");
+      System.out.println("[3] Restringida");
+      int optionPlaylist = sc.nextInt();
+      sc.nextLine();
+      switch (optionPlaylist){
+        case 1:
+        System.out.println("Ingresa el nombre de tu PlayList publica");
+        namePlayList = sc.nextLine();
+        myMcs.addPlayListPublic(namePlayList);
+        break;
+        case 2:
+        System.out.println("Ingresa el nombre de tu PlayList privada");
+        namePlayList = sc.nextLine();
+        System.out.println("Selecciona el usuario que esta creando la PlayList privada");
+        System.out.print(myMcs.showNameUser());
+        int indexUserPlayList = sc.nextInt();
+        sc.nextLine();
+        myMcs.addPlayListPriavte(namePlayList, myMcs.whoIsTheUser(myMcs.userNameIndex(indexUserPlayList)));
+        break;
+        case 3:
+        int[] indexs = new int[5];
+        System.out.println("Ingresa el nombre de tu PlayList restringida");
+        namePlayList = sc.nextLine();
+        System.out.println("Selecciona los usuarios que tiene acceso a esta PlayList");
+        System.out.print(myMcs.showNameUser());
+        for(int i = 0; i<indexs.length; i++){
+          System.out.println("Seleccion el Usuario "+(1+i));
+          indexs[i] = sc.nextInt()-1;
+          sc.nextLine();
+        }
+        myMcs.addPlayListRestricted(namePlayList, myMcs.usersRestricted(indexs));
+        break;
+        default:
+          System.out.println("No elegiste una opcion valida");
+      }
     }
   }
 }

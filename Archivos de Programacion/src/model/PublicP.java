@@ -9,7 +9,7 @@ public class PublicP extends PlayList{
 
   private double rankPlayList;
 
-  public Public(String namePlayList, double rankPlayList){
+  public PublicP(String namePlayList){
     super(namePlayList);
     this.rankPlayList = rankPlayList;
   }

@@ -59,7 +59,7 @@ public class PlayList{
     dataPlayList = "************ PlayList ************\n";
     dataPlayList += "** Tittle: "+getNamePlayList()+"\n";
     dataPlayList += "** Duration: "+getDurationPlayList().toDuration()+"\n";
-    dataPlayList += "** Genre: "+getGenderPlayList();
+    dataPlayList += "** Gender: "+getGenderPlayList();
     return dataPlayList;
   }
 }

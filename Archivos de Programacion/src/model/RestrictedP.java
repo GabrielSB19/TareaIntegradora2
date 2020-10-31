@@ -9,7 +9,7 @@ public class RestrictedP extends PlayList{
 
   private final static int MAX_PLAYLISTUSER = 5;
 
-  private User usersRestrictedPlayLists[] = new User[MAX_PLAYLISTUSER];
+  private User[] usersRestrictedPlayLists = new User[MAX_PLAYLISTUSER];
 
   public RestrictedP(String namePlayList, User[] usersRestrictedPlayLists){
     super(namePlayList);
@@ -20,13 +20,15 @@ public class RestrictedP extends PlayList{
     return usersRestrictedPlayLists;
   }
 
-  public void setUsersRestrictedPlayList(User[] userP){
+  public void setUsersRestrictedPlayList(User[] usersRestrictedPlayList){
     this.usersRestrictedPlayLists = usersRestrictedPlayLists;
   }
 
   @Override
   public String showDatePlayList(){
     String dataPlayList = super.showDatePlayList()+"\n";
+    dataPlayList += "** Duration: "+uptadeDurationFormat(uptadeDuration())+"\n";
+    dataPlayList += "** Gender: "+changeGender(uptadeGender())+"\n";
     for(int i = 0; i<MAX_PLAYLISTUSER; i++){
       dataPlayList += "** User: "+usersRestrictedPlayLists[i].getUserName()+"\n";
     }

@@ -9,8 +9,35 @@ import java.util.Scanner;
 
 public class Menu{
 
+  /**
+  *Constants to indicate the functional requirement to be executed.<br>
+  *<b>pre: </b> <br>
+  *<b>post: </b> <br>
+  */
+
+  private static final int REGISTER_USER = 1;
+  private static final int SEE_DATA_USER = 2;
+  private static final int REGISTER_SONG = 3;
+  private static final int SEE_DATA_SONG = 4;
+  private static final int CREATE_PLAYLIST = 5;
+  private static final int SEE_PLAYLIST = 6;
+  private static final int ADD_SONG_TO_PLAYLIST = 7;
+
+
+  /**
+  *Initialize my objects.<br>
+  *<b>pre: </b> <br>
+  *<b>post: </b> <br>
+  */
+
   private Mcs myMcs = new Mcs();
   private Scanner sc = new Scanner(System.in);
+
+  /**
+  *Show the available options to execute the code.<br>
+  *<b>pre: </b> <br>
+  *<b>post: Show the menu.<br>
+  */
 
   public void showMenu(){
     System.out.println("Elige la accion que deseas ejecutar");
@@ -20,8 +47,14 @@ public class Menu{
     System.out.println("[4] Ver el listado de la canciones");
     System.out.println("[5] Crear una PlayList");
     System.out.println("[6] Ver el listado de la PlayList");
-    System.out.println("[7] Añadir canciones a una PlayList");
+    System.out.println("[7] Anadir canciones a una PlayList");
   }
+
+  /**
+  *Ask the user for the option that he want to choose.<br>
+  *<b>pre: </b> <br>
+  *<b>post: Read the chosen option. <br>
+  */
 
   public int readOption(){
     int choice = sc.nextInt();
@@ -29,9 +62,15 @@ public class Menu{
     return choice;
   }
 
+  /**
+  *Choose the option to execute.<br>
+  *<b>pre: </b> <br>
+  *<b>post: </b> called the option to execute.<br>
+  */
+
   public void doOperation(int choice){
     switch (choice){
-      case 1:
+      case REGISTER_USER:
       addDataUser();
       break;
       case 2:
@@ -57,6 +96,12 @@ public class Menu{
     }
   }
 
+  /**
+  *Execute the option to choose.<br>
+  *<b>pre: </b> <br>
+  *<b>post: </b> execute the chosen functional requirement.<br>
+  */
+
   public void startProgram(){
     int option;
     do{
@@ -65,6 +110,12 @@ public class Menu{
       doOperation(option);
     } while(option != 8);
   }
+
+  /**
+  *Allows to add the information to create a new user.<br>
+  *<b>pre: </b> The name user must be written without space <br>
+  *<b>post: </b> The new user has been created.<br>
+  */
 
   public void addDataUser(){
     if(myMcs.hasUser()){
@@ -80,6 +131,12 @@ public class Menu{
       System.out.println("No se pudo agregar el usuario");
     }
   }
+
+  /**
+  *Allows to add the information to create a new song.<br>
+  *<b>pre: </b> At least one user has been created.<br>
+  *<b>post: </b> The new song has been created.<br>
+  */
 
   public void addDataSong(){
     if(myMcs.hasSong()){
@@ -140,6 +197,12 @@ public class Menu{
     }
   }
 
+  /**
+  *Allows to add the information to create a new PlayList, and choose the type of PlayList.<br>
+  *<b>pre: </b> At least one user and one song have been created.<br>
+  *<b>post: </b> The new PlayList has been created.<br>
+  */
+
   public void addPlayList(){
     String namePlayList = "";
     if(myMcs.hasPlayList()){
@@ -183,14 +246,21 @@ public class Menu{
     }
   }
 
+  /**
+  *Allows to add a song to the chosen PlayList.<br>
+  *<b>pre: </b> At least one user has been created.<br>
+  *<b>post: </b> The PlayList has been uptade with its songs.<br>
+  */
+
   public void addSongToPlayList(){
     System.out.println("Selecciona la PlayList a la que le deseas agregar una cancion");
     System.out.print(myMcs.showPlayListNames());
     int index1 = sc.nextInt();
     sc.nextLine();
     System.out.println("Selecciona la cancion que desas agregar a tu PlayList elegida");
-    System.out.println(myMcs.showSongName());
+    System.out.print(myMcs.showSongName());
     int index2 = sc.nextInt();
     sc.nextLine();
+    myMcs.addSongInThePlayList(index1, index2);
   }
 }

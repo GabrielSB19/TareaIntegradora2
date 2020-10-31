@@ -25,6 +25,8 @@ public class PrivateP extends PlayList{
   @Override
   public String showDatePlayList(){
     String dataPlayList = super.showDatePlayList()+"\n";
+    dataPlayList += "** Duration: "+uptadeDurationFormat(uptadeDuration())+"\n";
+    dataPlayList += "** Gender: "+changeGender(uptadeGender())+"\n";
     dataPlayList += "** User: "+userName1.getUserName()+"\n";
     dataPlayList += "**********************************\n";
     return dataPlayList;

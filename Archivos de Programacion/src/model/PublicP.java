@@ -23,4 +23,13 @@ public class PublicP extends PlayList{
   public void setAverage(double[] average){
     this.average = average;
   }
+
+  @Override
+  public String showDatePlayList(){
+    String dataPlayList = super.showDatePlayList()+"\n";
+    dataPlayList += "** Duration: "+uptadeDurationFormat(uptadeDuration())+"\n";
+    dataPlayList += "** Gender: "+changeGender(uptadeGender())+"\n";
+    dataPlayList += "**********************************\n";
+    return dataPlayList;
+  }
 }

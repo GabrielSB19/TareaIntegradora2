@@ -25,7 +25,7 @@ public class User{
   *<b>post: </b> The constructor has been created. <br>
   @param userName the user name. userName != "" and cannot have space.
   @param password the user password. password != "" and must be a string without space.
-  @param ageUer the age of the user. ageUser != "" and greater than 0.
+  @param ageUser the age of the user. ageUser != "" and greater than 0.
   */
 
   public User(String userName, String password, int ageUser){

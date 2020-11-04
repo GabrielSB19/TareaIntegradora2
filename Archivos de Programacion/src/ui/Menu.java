@@ -38,7 +38,7 @@ public class Menu{
   /**
   *Show the available options to execute the code.<br>
   *<b>pre: </b> <br>
-  *<b>post: Show the menu.<br>
+  *<b>post: </b> Show the menu.<br>
   */
 
   public void showMenu(){
@@ -57,7 +57,8 @@ public class Menu{
   /**
   *Ask the user for the option that he want to choose.<br>
   *<b>pre: </b> <br>
-  *<b>post: Read the chosen option. <br>
+  *<b>post: </b> Read the chosen option. <br>
+  @return choise.
   */
 
   public int readOption(){
@@ -70,6 +71,7 @@ public class Menu{
   *Choose the option to execute.<br>
   *<b>pre: </b> <br>
   *<b>post: </b> called the option to execute.<br>
+  @param choice Option chosen by the user. choice = greatar and equals than 0 and less than 10.
   */
 
   public void doOperation(int choice){

@@ -51,7 +51,7 @@ public abstract class PlayList{
   @param namePlayList name of the PlayList. namePlayList != "".
   */
 
-  public void setNamePlayList(){
+  public void setNamePlayList(String namePlayList){
     this.namePlayList = namePlayList;
   }
 
@@ -73,7 +73,7 @@ public abstract class PlayList{
   @param durationPlayList the PlayList duration. durationPlayList = minutes and second are int.
   */
 
-  public void setDurationPlayList(){
+  public void setDurationPlayList(Duration durationPlayList){
     this.durationPlayList = durationPlayList;
   }
 
@@ -95,7 +95,7 @@ public abstract class PlayList{
   @param genderPlayList the gender of the song. genderSong = ROCK, HIPHOP, MUSICACLASICA, RAGGAE, SALSA, METAL, DESCONOCIDO.
   */
 
-  public void setGenderPlayList(){
+  public void setGenderPlayList(Gender genderPlayList){
     this.genderPlayList = genderPlayList;
   }
 
@@ -138,6 +138,7 @@ public abstract class PlayList{
   *<b>pre: </b> At least one user, one song and one PlayList must be created.<br>
   *<b>post:</b> Genres without repetition.<br>
   @param newsGenders the array Genders. newsGenders = ROCK, HIPHOP, MUSICACLASICA, RAGGAE, SALSA, METAL, DESCONOCIDO.
+  @return genderUptade.
   */
 
   public String changeGender(Gender[] newsGenders){

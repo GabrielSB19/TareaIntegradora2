@@ -60,7 +60,7 @@ public class Mcs{
   *<b>post: </b> The User object has been created.<br>
   @param userName the user name. userName != "" and cannot have space
   @param password the user password. password != "" and must be a string without space
-  @param ageUer the age of the user. ageUser != "" and greater than 0
+  @param ageUser the age of the user. ageUser != "" and greater than 0
   @return user.
   */
 
@@ -146,6 +146,7 @@ public class Mcs{
   *Allows to show the data of the each song created.<br>
   *<b>pre: </b> The methods called as addSong, addDataUser must be initialized and at least one song created.<br>
   *<b>post: </b> Showing the information of the song in the requerid format.<br>
+  @return dataSong;
   */
 
   public String showSong(){
@@ -256,7 +257,7 @@ public class Mcs{
   *<b>pre: </b> Must exister at least five user and one song.<br>
   *<b>post: </b> The restricted PlayList has been created.<br>
   @param namePlayList name of the restricted PlayList. namePlayList != ""
-  @param usersRestrictedPlayList name of the users who have access to the playlis. usersRestrictedPlayLists != null and = 5
+  @param usersRestrictedPlayLists name of the users who have access to the playlis. usersRestrictedPlayLists != null and = 5
   @return thePlayLists.
   */
 
@@ -347,13 +348,9 @@ public class Mcs{
   */
 
   public User[] usersRestricted(int[] indexs){
-    boolean out = false;
     User[] usersRestrictedPlayLists = new User[5];
-    for(int i = 0; i<usersRestrictedPlayLists.length && !out; i++){
-      if(usersRestrictedPlayLists[i] == null){
-        usersRestrictedPlayLists[i] = user[indexs[i]];
-        out = false;
-      }
+    for(int i = 0; i<5; i++){
+      usersRestrictedPlayLists[i] = user[indexs[i]];
     }
     return usersRestrictedPlayLists;
   }

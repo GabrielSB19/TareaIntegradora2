@@ -36,6 +36,8 @@ public class Mcs{
   private User[] user;
   private Song[] poolSong;
   private PlayList[] thePlayLists;
+  private double[] score;
+  private PlayList[] onlyPublic;
 
   /**
   *Allows to create the Mcs class constructor.<br>
@@ -59,6 +61,7 @@ public class Mcs{
   @param userName the user name. userName != "" and cannot have space
   @param password the user password. password != "" and must be a string without space
   @param ageUer the age of the user. ageUser != "" and greater than 0
+  @return user.
   */
 
   public User[] addUser(String userName, String password, int ageUser){
@@ -77,6 +80,7 @@ public class Mcs{
   *Allows to know how many user objects i have created.<br>
   *<b>pre: </b> The method called addUser must be initialized .<br>
   *<b>post: </b> the amount of my user objects.<br>
+  @return If numUser is less than MAX_USER is true, if not is false.
   */
 
   public boolean hasUser(){
@@ -87,6 +91,7 @@ public class Mcs{
   *Allows to show the data of the each user created.<br>
   *<b>pre: </b> The methods called as addUser, addDataUser must be initialized and at least one user created.<br>
   *<b>post: </b> Showing the information of the user in the requerid format.<br>
+  @return dataUser.
   */
 
   public String showUser(){
@@ -109,9 +114,10 @@ public class Mcs{
   @param minutes minutes of the song. minutes = greater than zero.
   @param seconds seconds of the song. seconds = greater than zero and less than sixty.
   @param genderSong gender of the song. genderSong = must be one element from the Gender class.
+  @return poolSong.
   */
 
-  public void addSongPool(String tittleSong, String artistName, String realaseDateSong, int minutes, int seconds, String genderSong){
+  public Song[] addSongPool(String tittleSong, String artistName, String realaseDateSong, int minutes, int seconds, String genderSong){
     Duration durationSong = new Duration(minutes, seconds);
     Gender askGenderSong = Gender.valueOf(genderSong);
     boolean space1 = false;
@@ -122,12 +128,14 @@ public class Mcs{
         numSongs++;
       }
     }
+    return poolSong;
   }
 
   /**
   *Allows to know how many poolSong objects i have created.<br>
   *<b>pre: </b> The method called addSong must be initialized .<br>
   *<b>post: </b> the amount of my poolSong objects.<br>
+  @return If numSongs is less than MAX_SONG is true, if not is false.
   */
 
   public boolean hasSong(){
@@ -153,7 +161,8 @@ public class Mcs{
   /**
   *Allows to show the name of the each user.<br>
   *<b>pre: </b> The methods called as addSong, addDataUser must be initialized, at least one song created and one user.<br>
-  *<b>post: </b> Showing the information of the user name<br>
+  *<b>post: </b> Showing the information of the user name.<br>
+  @return nameUsertoSong.
   */
 
   public String showNameUser(){
@@ -171,6 +180,7 @@ public class Mcs{
   *<b>pre: </b> The methods called as addSong, addDataUser must be initialized, at least one song created and one user.<br>
   *<b>post: </b> The user that created the song.<br>
   @param namePosicion posicion of the user in the array. namePoscion = greater than 0 and less than ten.
+  @return index
   */
 
   public int userIndex(int namePosicion){
@@ -193,7 +203,7 @@ public class Mcs{
     else if(user[index].getAmountCategory()>10 && user[index].getAmountCategory()<30){
       user[index].setCategoryUser(user[index].newCategory("mildContributor"));
     }
-    else if(user[index].getAmountCategory() == 10){
+    else if(user[index].getAmountCategory() == 30){
       user[index].setCategoryUser(user[index].newCategory("starContributor"));
     }
   }
@@ -203,9 +213,10 @@ public class Mcs{
   *<b>pre: </b> Must exister at least one user and one song.<br>
   *<b>post: </b> The public PlayList has been created.<br>
   @param namePlayList name of the public PlayList. namePlayList != "".
+  @return thePlayLists.
   */
 
-  public PlayList[] addPlayListPublic(String namePlayList){
+  public PlayList[] addPlayList(String namePlayList){
     boolean space2 = false;
     for(int i = 0; i<MAX_PLAYLIST && !space2; i++){
       if(thePlayLists[i] == null){
@@ -224,9 +235,10 @@ public class Mcs{
   *<b>post: </b> The private PlayList has been created.<br>
   @param namePlayList name of the private PlayList. namePlayList != ""
   @param userName1 name of the user who has access to the playlist. userName1 != null
+  @return thePlayLists.
   */
 
-  public void addPlayListPriavte(String namePlayList, User userName1){
+  public PlayList[] addPlayList(String namePlayList, User userName1){
     boolean space3 = false;
     for(int i = 0; i<MAX_PLAYLIST && !space3; i++){
       if(thePlayLists[i] == null){
@@ -236,6 +248,7 @@ public class Mcs{
         space3 = true;
       }
     }
+    return thePlayLists;
   }
 
   /**
@@ -244,9 +257,10 @@ public class Mcs{
   *<b>post: </b> The restricted PlayList has been created.<br>
   @param namePlayList name of the restricted PlayList. namePlayList != ""
   @param usersRestrictedPlayList name of the users who have access to the playlis. usersRestrictedPlayLists != null and = 5
+  @return thePlayLists.
   */
 
-  public void addPlayListRestricted(String namePlayList, User[] usersRestrictedPlayLists){
+  public PlayList[] addPlayList(String namePlayList, User[] usersRestrictedPlayLists){
     boolean space4 = false;
     for(int i = 0; i<MAX_PLAYLIST && !space4; i++){
       if(thePlayLists[i] == null){
@@ -256,12 +270,14 @@ public class Mcs{
         space4 = true;
       }
     }
+    return thePlayLists;
   }
 
   /**
   *Allows to know how many PlayList objects i have created.<br>
   *<b>pre: </b> The method called addPlayList, addPlayListPublic, addPlayListPriavte or addPlayListRestricted must be initialized .<br>
   *<b>post: </b> the amount of my playlist objects.<br>
+  @return If numPlayList is less than MAX_PLAYLIST is true, if not is false.
   */
 
   public boolean hasPlayList(){
@@ -272,6 +288,7 @@ public class Mcs{
   *Allows to show the data of the each playlist created.<br>
   *<b>pre: </b> The methods called as addPlayList, addPlayListPublic, addPlayListPriavte or addPlayListRestricted must be initialized and at least one song created.<br>
   *<b>post: </b> Showing the information of the playlist in the requerid format.<br>
+  @return dataPlayList.
   */
 
   public String showPlayList(){
@@ -291,6 +308,7 @@ public class Mcs{
   *<b>pre: </b> The methods called as addPlayList, addPlayListPriavte must be initialized, at least one private PlayList created and one user.<br>
   *<b>post: </b> The index of the user that created the private playlist.<br>
   @param  index index of the user that created the private playlist. index = greater than 0 and less than ten.
+  @return userName1
   */
 
   public String userNameIndex(int index){
@@ -301,10 +319,11 @@ public class Mcs{
   }
 
   /**
-  *Allows to compare the position of the user who created the user with your index.<br>
+  *Allows to compare the position of the user who created the private PlayList with your index.<br>
   *<b>pre: </b> The methods called as addPlayList, addPlayListPriavte must be initialized, at least one private PlayList created and one user.<br>
   *<b>post: </b> The user that created the private playlist.<br>
   @param  name name of the user that created the private playlist. name != ""
+  @return userPrivate.
   */
 
   public User whoIsTheUser(String name){
@@ -324,33 +343,26 @@ public class Mcs{
   *<b>pre: </b> The methods called as addPlayList, addPlayListRestricted must be initialized, at least one private PlayList created and five user.<br>
   *<b>post: </b> which users can watch the playlist restricted.<br>
   @param  indexs posicion of the user that can watch the restricted playlist. indexs != "" and indexs  greater than 0 and less than 5
+  @return usersRestrictedPlayList.
   */
 
   public User[] usersRestricted(int[] indexs){
+    boolean out = false;
     User[] usersRestrictedPlayLists = new User[5];
-    for(int i = 0; i<5; i++){
-      usersRestrictedPlayLists[i] = user[indexs[i]];
+    for(int i = 0; i<usersRestrictedPlayLists.length && !out; i++){
+      if(usersRestrictedPlayLists[i] == null){
+        usersRestrictedPlayLists[i] = user[indexs[i]];
+        out = false;
+      }
     }
     return usersRestrictedPlayLists;
   }
-
-/*
-  public double[] aksPointsPlayListPublic(double grade){
-    boolean space6 = false;
-    double [] average = new double[MAX_USER];
-    for(int i = 0; i<MAX_USER && !space6; i++){
-      if(average[i] != 0){
-        average[i] = grade;
-      }
-    }
-    return average;
-  }
-  */
 
   /**
   *Show the name available PlayList.<br>
   *<b>pre: </b> Must exister at least one playlist and one song.<br>
   *<b>post: </b> The name of all playlist.<br>
+  @return namePlayList.
   */
 
   public String showPlayListNames(){
@@ -367,6 +379,7 @@ public class Mcs{
   *Show the name of the song created.<br>
   *<b>pre: </b> Must exister at least one playlist and one song.<br>
   *<b>post: </b> The name of all songs.<br>
+  @return nameSong.
   */
 
   public String showSongName(){
@@ -391,5 +404,52 @@ public class Mcs{
     index1 = index1-1;
     index2 = index2-1;
     thePlayLists[index1].addSongatOne(poolSong[index2]);
+  }
+
+  /**
+  *Show the name of the public PlatList.<br>
+  *<b>pre: </b> Must exister at least one public playlist.<br>
+  *<b>post: </b> The name of all public PlayList.<br>
+  @return playListPublic.
+  */
+
+  public String showPlayListPublic(){
+    String playListPublic = "";
+    int posicion = 0;
+    for(int i = 0; i<MAX_PLAYLIST; i++){
+      if(thePlayLists[i] != null){
+        if(thePlayLists[i] instanceof PublicP){
+          playListPublic += "["+(posicion+1)+"]"+thePlayLists[i].getNamePlayList()+"\n";
+          posicion++;
+        }
+      }
+    }
+    return playListPublic;
+  }
+
+  public PlayList[] onlyPublicPlayList(){
+    onlyPublic = new PlayList[MAX_PLAYLIST];
+    int posicionPublic = 0;
+    for(int i = 0; i<MAX_PLAYLIST; i++){
+      if(thePlayLists[i] instanceof PublicP){
+        if(onlyPublic[i] == null){
+          onlyPublic[posicionPublic] = thePlayLists[i];
+          posicionPublic++;
+        }
+      }
+    }
+    return onlyPublic;
+  }
+
+  public void scoreUptadeInThePlayList(PlayList[] onlyPublic, int index, double score){
+    boolean space8 = false;
+    for(int i = 0; i<onlyPublic.length && !space8; i++){
+      PlayList var = null;
+      if(onlyPublic[index].getNamePlayList().equals(thePlayLists[i].getNamePlayList())){
+        var = thePlayLists[i];
+        ((PublicP) var).setAverage(score);
+        space8 = true;
+      }
+    }
   }
 }

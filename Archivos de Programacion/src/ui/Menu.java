@@ -22,6 +22,8 @@ public class Menu{
   private static final int CREATE_PLAYLIST = 5;
   private static final int SEE_PLAYLIST = 6;
   private static final int ADD_SONG_TO_PLAYLIST = 7;
+  private static final int VOTE_PUBLIC_CLASS = 8;
+  private static final int EXIT = 9;
 
 
   /**
@@ -48,6 +50,8 @@ public class Menu{
     System.out.println("[5] Crear una PlayList");
     System.out.println("[6] Ver el listado de la PlayList");
     System.out.println("[7] Anadir canciones a una PlayList");
+    System.out.println("[8] Puntuar una PlayList publica");
+    System.out.println("[9] Salir de MCS");
   }
 
   /**
@@ -91,6 +95,12 @@ public class Menu{
       case 7:
       addSongToPlayList();
       break;
+      case 8:
+      pointThePlayListPublic();
+      break;
+      case 9:
+      System.exit(0);
+      break;
       default:
         System.out.println("Ingresa una opcion valida");
     }
@@ -108,7 +118,7 @@ public class Menu{
       showMenu();
       option = readOption();
       doOperation(option);
-    } while(option != 8);
+    } while(option != 10);
   }
 
   /**
@@ -216,7 +226,7 @@ public class Menu{
         case 1:
         System.out.println("Ingresa el nombre de tu PlayList publica");
         namePlayList = sc.nextLine();
-        myMcs.addPlayListPublic(namePlayList);
+        myMcs.addPlayList(namePlayList);
         break;
         case 2:
         System.out.println("Ingresa el nombre de tu PlayList privada");
@@ -225,7 +235,7 @@ public class Menu{
         System.out.print(myMcs.showNameUser());
         int indexUserPlayList = sc.nextInt();
         sc.nextLine();
-        myMcs.addPlayListPriavte(namePlayList, myMcs.whoIsTheUser(myMcs.userNameIndex(indexUserPlayList)));
+        myMcs.addPlayList(namePlayList, myMcs.whoIsTheUser(myMcs.userNameIndex(indexUserPlayList)));
         break;
         case 3:
         int[] indexs = new int[5];
@@ -238,7 +248,7 @@ public class Menu{
           indexs[i] = sc.nextInt()-1;
           sc.nextLine();
         }
-        myMcs.addPlayListRestricted(namePlayList, myMcs.usersRestricted(indexs));
+        myMcs.addPlayList(namePlayList, myMcs.usersRestricted(indexs));
         break;
         default:
           System.out.println("No elegiste una opcion valida");
@@ -262,5 +272,21 @@ public class Menu{
     int index2 = sc.nextInt();
     sc.nextLine();
     myMcs.addSongInThePlayList(index1, index2);
+  }
+
+  /**
+  *Allows to add rate a public PlayList from 1 to 5.<br>
+  *<b>pre: </b> At least one user and a public PlayList must be created.<br>
+  *<b>post: </b> The rating of the selected public PlayList has been updated.<br>
+  */
+
+  public void pointThePlayListPublic(){
+    System.out.println("Selecciona la PlayList que deseas puntuar");
+    System.out.print(myMcs.showPlayListPublic());
+    int index = sc.nextInt()-1;
+    sc.nextLine();
+    System.out.println("Puntua la PlayList, recuerda 1 la mas baja y 5 la mas alta");
+    double score = sc.nextDouble();
+    myMcs.scoreUptadeInThePlayList(myMcs.onlyPublicPlayList(), index, score);
   }
 }

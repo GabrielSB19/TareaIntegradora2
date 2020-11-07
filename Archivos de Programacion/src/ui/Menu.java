@@ -139,6 +139,7 @@ public class Menu{
       System.out.println("Ingresa tu edad");
       int ageUser = sc.nextInt();
       myMcs.addUser(userName, password, ageUser);
+      System.out.println("Usuario creado con exito");
     }
     else {
       System.out.println("No se pudo agregar el usuario");

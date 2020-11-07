@@ -3,6 +3,7 @@ Gabriel Suarez
 A00368589
 */
 
+
 package model;
 
 public abstract class PlayList{
